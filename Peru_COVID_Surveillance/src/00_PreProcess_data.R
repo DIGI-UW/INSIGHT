@@ -1,6 +1,6 @@
 library(data.table)
+library(tidyverse)
 library(janitor)
-library(lubridate)
 library(AMR)
 
 # Functions definition ----------------------------------------------------
@@ -18,9 +18,10 @@ miss <- function(x) {
 
 na_string <- c(NA_character_, "", "NULL")
 
-molecular <- fread(
-  "data/pm31Jul2022.csv",
-  na.strings = na_string
+molecular <- read_delim(
+  "data/pm31Jul2022.csv.xz",
+  delim = "|",
+  na = na_string
 ) %>% 
   clean_names() %>%
   mutate(
@@ -28,23 +29,25 @@ molecular <- fread(
       provincia_paciente == "CALLAO", "CALLAO", departamento_paciente)
     )
 
-positives <- fread(
-  "data/positivos_covid.csv", 
-  na.strings = na_string
+positives <- read_csv2(
+  "data/positivos_covid.csv.xz", 
+  na = na_string
 ) %>% clean_names()
 
-deaths <- fread(
-  "data/fallecidos_covid.csv", 
-  na.strings = na_string
+deaths <- read_csv2(
+  "data/fallecidos_covid.csv.xz", 
+  na = na_string
 ) %>% clean_names()
 
-suspected <- fread(
-  "data/TB_F00_SICOVID.csv", 
-  na.strings = na_string
+suspected <- read_csv(
+  "data/TB_F00_SICOVID.csv.xz", 
+  na = na_string
 ) %>% clean_names() 
 
-hospital  <- fread("data/TB_HOSP_VAC_FALLECIDOS.csv", na.strings = na_string)
-attention <- fread("data/TB_ATEN_COVID19.csv", na.strings = na_string)
+hospital  <- read_csv("data/TB_HOSP_VAC_FALLECIDOS.csv.xz", 
+                      na = na_string)
+attention <- read_csv("data/TB_ATEN_COVID19.csv.xz", 
+                      na = na_string)
 
 # Formatting the datasets --------------------------------------------------
 
@@ -108,11 +111,9 @@ attention[
 
 # Writing data ------------------------------------------------------------
 
-fwrite(molecular, "data/processed/molecular.gz", compress = "gzip")
-fwrite(positives, "data/processed/positives.gz", compress = "gzip")
-fwrite(suspected, "data/processed/suspected.gz", compress = "gzip")
-fwrite(deaths,    "data/processed/deaths.gz",    compress = "gzip")
-fwrite(hospital,  "data/processed/hospital.gz",  compress = "gzip")
-fwrite(attention, "data/processed/attention.gz", compress = "gzip")
-
-
+write_csv(molecular, "data/processed/molecular.csv.xz")
+write_csv(positives, "data/processed/positives.csv.xz")
+write_csv(suspected, "data/processed/suspected.csv.xz")
+write_csv(deaths,    "data/processed/deaths.csv.xz")
+write_csv(hospital,  "data/processed/hospital.csv.xz")
+write_csv(attention, "data/processed/attention.csv.xz")
