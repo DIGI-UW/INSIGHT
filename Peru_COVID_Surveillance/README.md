@@ -23,3 +23,12 @@ To run the analysis locally, follow these steps:
 -   Open the RStudio project file `Peru_COVID_Surveillance.Rproj`.
 -   Install the required R packages by running `renv::restore()` in the R console.
 -   Open the `Report.qmd` file and follow the instructions to run the analysis.
+
+## Important
+
+This repository contains the original [data](data/). The CSV files have been
+compressed using the xz format to save space. Because a couple of the
+files are over the usual Github limit of 50MB, this repository is making use of
+LFS (Large File Support).
+
+See more details in LFS at the Github documentation on [Managing Large Files](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github)
