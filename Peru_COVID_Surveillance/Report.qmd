@@ -41,12 +41,12 @@ miss <- function(x) {
 
 # Reading data ------------------------------------------------------------
 
-molecular <- fread("data/processed/molecular.gz")
-positives <- fread("data/processed/positives.gz")
-suspected <- fread("data/processed/suspected.gz")
-deaths    <- fread("data/processed/deaths.gz")
-hospital  <- fread("data/processed/hospital.gz")
-attention <- fread("data/processed/attention.gz")
+molecular <- read_csv("data/processed/molecular.csv.xz")
+positives <- read_csv("data/processed/positives.csv.xz")
+suspected <- read_csv("data/processed/suspected.csv.xz")
+deaths    <- read_csv("data/processed/deaths.csv.xz")
+hospital  <- read_csv("data/processed/hospital.csv.xz")
+attention <- read_csv("data/processed/attention.csv.xz")
 
 peru_dep  <- read_sf("data/departamentos/DEPARTAMENTOS.shp")   
 peru_prov <- read_sf("data/provincias/PROVINCIAS.shp")
@@ -57,17 +57,17 @@ peru_prov <- read_sf("data/provincias/PROVINCIAS.shp")
 
 ## Indicator 1a
 
-+--------+---------------------------------------------------------------------------------+----------------------------------------------------------------------------+-----------------+-------------+
-| **\#** | **Indicator definition**                                                        | **Numerator and denominator**                                              | **Data source** | **Levels**  |
-+========+=================================================================================+============================================================================+=================+=============+
-| 1a     | Proportion of cases recorded in a database with no missing required information | **Numerator:** total cases recorded with no missing information            | \- PCR          | \- Year     |
-|        |                                                                                 |                                                                            |                 |             |
-|        |                                                                                 | **Denominator:** total cases recorded, including unknown and missing items | \- Positives    | \- Sex      |
-|        |                                                                                 |                                                                            |                 |             |
-|        |                                                                                 |                                                                            | \- Deaths       | \- Region   |
-|        |                                                                                 |                                                                            |                 |             |
-|        |                                                                                 |                                                                            |                 | \- Province |
-+--------+---------------------------------------------------------------------------------+----------------------------------------------------------------------------+-----------------+-------------+
++---------+---------------------------------------------------------------------------------+----------------------------------------------------------------------------+-----------------+-------------+
+| **\#**  | **Indicator definition**                                                        | **Numerator and denominator**                                              | **Data source** | **Levels**  |
++=========+=================================================================================+============================================================================+=================+=============+
+| 1a      | Proportion of cases recorded in a database with no missing required information | **Numerator:** total cases recorded with no missing information            | \- PCR          | \- Year     |
+|         |                                                                                 |                                                                            |                 |             |
+|         |                                                                                 | **Denominator:** total cases recorded, including unknown and missing items | \- Positives    | \- Sex      |
+|         |                                                                                 |                                                                            |                 |             |
+|         |                                                                                 |                                                                            | \- Deaths       | \- Region   |
+|         |                                                                                 |                                                                            |                 |             |
+|         |                                                                                 |                                                                            |                 | \- Province |
++---------+---------------------------------------------------------------------------------+----------------------------------------------------------------------------+-----------------+-------------+
 
 : {tbl-colwidths="\[5,30,30, 17.5, 17.5\]"}
 
