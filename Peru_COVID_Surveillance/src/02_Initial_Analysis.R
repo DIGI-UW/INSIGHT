@@ -1,7 +1,6 @@
+library(tidyverse)
 library(data.table)
-library(magrittr)
 library(janitor)
-library(lubridate)
 library(AMR)
 options(na.rm = TRUE)
 
@@ -18,12 +17,12 @@ miss <- function(x) {
 
 # Reading data ------------------------------------------------------------
 
-molecular <- fread("data/processed/molecular.gz")
-positives <- fread("data/processed/positives.gz")
-suspected <- fread("data/processed/suspected.gz")
-deaths    <- fread("data/processed/deaths.gz")
-hospital  <- fread("data/processed/hospital.gz")
-attention <- fread("data/processed/attention.gz")
+molecular <- read_csv("data/processed/molecular.csv.xz")
+positives <- read_csv("data/processed/positives.csv.xz")
+suspected <- read_csv("data/processed/suspected.csv.xz")
+deaths    <- read_csv("data/processed/deaths.csv.xz")
+hospital  <- read_csv("data/processed/hospital.csv.xz")
+attention <- read_csv("data/processed/attention.csv.xz")
 
 # Completeness ------------------------------------------------------------
 

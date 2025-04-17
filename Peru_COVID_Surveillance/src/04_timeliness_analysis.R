@@ -10,9 +10,9 @@ source("R/functions.R")
 
 # Reading data ------------------------------------------------------------
 
-suspected <- read_csv("data/processed/suspected.gz")
-positive  <- read_csv("data/processed/positives.gz")
-hospital  <- read_csv("data/processed/hospital.gz")
+suspected <- read_csv("data/processed/suspected.csv.xz")
+positive  <- read_csv("data/processed/positives.csv.xz")
+hospital  <- read_csv("data/processed/hospital.csv.xz")
 
 peru_dep  <- read_sf("data/departamentos/DEPARTAMENTOS.shp")   
 peru_prov <- read_sf("data/provincias/PROVINCIAS.shp")

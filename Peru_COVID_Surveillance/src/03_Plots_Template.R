@@ -12,7 +12,7 @@ source("R/functions.R")
 datasets <- c("molecular", "positives", "deaths", "suspected")
 i <- 1
 
-data <- fread(paste0("data/processed/", datasets[i],".gz"))
+data <- read_csv(paste0("data/processed/", datasets[i],".csv.xz"))
 peru_dep  <- read_sf("data/departamentos/DEPARTAMENTOS.shp")   
 peru_prov <- read_sf("data/provincias/PROVINCIAS.shp")
 

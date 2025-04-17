@@ -30,28 +30,29 @@ miss <- function(x) {
 
 na_string <- c(NA_character_, "", "NULL")
 
-molecular <- fread(
-  "data/pm21Septiembre2021.csv",
-  na.strings = na_string
+molecular <- read_delim(
+  "data/pm21Septiembre2021.csv.xz",
+  delim = "|",
+  na = na_string
   ) %>% clean_names()
 
-positives <- fread(
-  "data/positivos_covid.csv", 
-  na.strings = na_string
+positives <- read_csv2(
+  "data/positivos_covid.csv.xz", 
+  na = na_string
   ) %>% clean_names()
 
-deaths <- fread(
-  "data/fallecidos_covid.csv", 
-  na.strings = na_string
+deaths <- read_csv2(
+  "data/fallecidos_covid.csv.xz", 
+  na = na_string
   ) %>% clean_names()
 
-suspected <- fread(
-  "data/TB_F00_SICOVID.csv", 
-  na.strings = na_string
+suspected <- read_csv(
+  "data/TB_F00_SICOVID.csv.xz", 
+  na = na_string
   ) %>% clean_names() 
 
-hospital  <- fread("data/TB_HOSP_VAC_FALLECIDOS.csv", na.strings = na_string)
-attention <- fread("data/TB_ATEN_COVID19.csv", na.strings = na_string)
+hospital  <- read_csv("data/TB_HOSP_VAC_FALLECIDOS.csv.xz", na = na_string)
+attention <- read_csv("data/TB_ATEN_COVID19.csv.xz", na = na_string)
 
 # Formatting the datasets --------------------------------------------------
 

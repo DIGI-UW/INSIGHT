@@ -10,8 +10,8 @@ source("R/functions.R")
 
 # Reading data ------------------------------------------------------------
 
-molecular <- read_csv("data/processed/molecular.gz")
-positive  <- read_csv("data/processed/positives.gz")
+molecular <- read_csv("data/processed/molecular.csv.xz")
+positive  <- read_csv("data/processed/positives.csv.xz")
 
 peru_dep  <- read_sf("data/departamentos/DEPARTAMENTOS.shp")   
 peru_prov <- read_sf("data/provincias/PROVINCIAS.shp")
