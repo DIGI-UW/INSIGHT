@@ -3,20 +3,20 @@ library(janitor)
 library(dm)
 library(VennDiagram)
 
-deaths      <- read_delim("data/fallecidos_covid.csv", delim = ";") %>% 
+deaths      <- read_delim("data/fallecidos_covid.csv.xz", delim = ";") %>% 
   clean_names()
-molecular   <- read_delim("data/pm21Septiembre2021.csv", delim = "|") %>% 
+molecular   <- read_delim("data/pm21Septiembre2021.csv.xz", delim = "|") %>% 
   clean_names()
-positives   <- read_delim("data/positivos_covid.csv", delim = ";") %>% 
+positives   <- read_delim("data/positivos_covid.csv.xz", delim = ";") %>% 
   clean_names()
-suspected   <- read_csv("data/TB_F00_SICOVID.csv")
-attentions  <- read_csv("data/TB_ATEN_COVID19.csv")
-hospitalization    <- read_csv("data/TB_HOSP_VAC_FALLECIDOS.csv") %>% 
+suspected   <- read_csv("data/TB_F00_SICOVID.csv.xz")
+attentions  <- read_csv("data/TB_ATEN_COVID19.csv.xz")
+hospitalization    <- read_csv("data/TB_HOSP_VAC_FALLECIDOS.csv.xz") %>% 
   select(eess_renaes:evolucion_hosp_ultimo)
 facilities  <- hospitalization %>% 
   select(id_eess, eess_nombre) %>% 
   distinct()
-people      <- read_delim("data/positivos_covid.csv", delim = ";") %>% 
+people      <- read_delim("data/positivos_covid.csv.xz", delim = ";") %>% 
   select(id_persona, EDAD, SEXO) %>% 
   group_by(id_persona) %>% 
   summarize(edad = first(EDAD), sexo = first(SEXO))
